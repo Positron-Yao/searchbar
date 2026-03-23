@@ -92,7 +92,7 @@ class SearchBox(QWidget):
             super().keyPressEvent(event)
 
 
-if __name__ == "__main__":
+def main():
     app = QApplication(sys.argv)
 
     # 设置应用程序名称（非必须）
@@ -106,3 +106,6 @@ if __name__ == "__main__":
 
     sys.exit(app.exec_())
 
+
+if __name__ == "__main__":
+    main()
