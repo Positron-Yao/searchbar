@@ -20,7 +20,7 @@ class SearchBox(QWidget):
     def setup_ui(self):
         # 创建一个输入框
         self.edit = QLineEdit(self)
-        self.edit.setPlaceholderText("在此输入搜索内容")
+        self.edit.setPlaceholderText("Input here...")
         self.edit.setFont(QFont("HarmonyOS Sans", 14))
         self.edit.returnPressed.connect(self.on_search)
 
@@ -67,6 +67,11 @@ class SearchBox(QWidget):
         text = self.edit.text().strip()
         if not text:
             # 如果输入为空，直接关闭窗口
+            self.close()
+            return
+
+        if text.startswith(":"):
+            subprocess.Popen(text.lstrip(":").split(" "), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             self.close()
             return
 
