@@ -74,6 +74,12 @@ class SearchBox(QWidget):
             subprocess.Popen(text.lstrip(":").split(" "), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             self.close()
             return
+        elif text.startswith("/"):
+            subprocess.Popen(["vivaldi", text.lstrip("/")], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            self.close()
+            return
+        elif text.startswith("?"):
+            text = text.lstrip("?")
 
         # 构造 Bing 搜索 URL
         encoded_text = quote(text)
